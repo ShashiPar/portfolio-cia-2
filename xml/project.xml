@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="projects.xsd">
+  <project>
+    <title>AI and ML</title>
+    <description>This project helps us explore the world of AI and ML.</description>
+    <technologies>
+      <technology>AI</technology>
+      <technology>ML</technology>
+    </technologies>
+  </project>
+  <project>
+    <title>Web Development</title>
+    <description>Helps us explore Web Technologies.</description>
+    <technologies>
+      <technology>JavaScript</technology>
+      <technology>React</technology>
+    </technologies>
+  </project>
+  <project>
+    <title>Andriod</title>
+    <description>Helps us explore Android.</description>
+    <technologies>
+      <technology>Kotlin</technology>
+      <technology>Java</technology>
+    </technologies>
+  </project>
+</projects>

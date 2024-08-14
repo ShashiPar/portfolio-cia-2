@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio: Shashi P</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/project.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html"> Shashi </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">
+              <i class="fas fa-images"></i> Gallery
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="project.html">
+              <i class="fas fa-briefcase"></i> Projects
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">
+              <i class="fas fa-envelope"></i> Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="hero projects-hero">
+      <div class="hero-content">
+        <h1>My Projects</h1>
+        <span>See What I've Built</span>
+        <a href="contact.html" class="btn btn-primary">
+          <i class="fas fa-envelope"></i> Get in Touch
+        </a>
+      </div>
+    </section>
+
+    <section class="projects">
+      <div id="project-list" class="container"></div>
+    </section>
+
+    <footer class="footer">
+      <div class="container text-center">
+        <p>&copy; 2024 Shashi. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const xhr = new XMLHttpRequest();
+        const url =
+          "https://api.github.com/repos/ShashiPar/crypto-website/commits"; 
+
+        xhr.open("GET", url, true);
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            const commits = JSON.parse(xhr.responseText);
+            displayCommits(commits);
+          } else {
+            console.error("Failed to fetch data:", xhr.status, xhr.statusText);
+          }
+        };
+        xhr.onerror = function () {
+          console.error("Request error");
+        };
+        xhr.send();
+
+        function displayCommits(commits) {
+          const projectList = document.getElementById("project-list");
+          projectList.innerHTML = "";
+
+          commits.forEach((commit) => {
+            const commitElement = document.createElement("div");
+            commitElement.className = "commit";
+            commitElement.innerHTML = `
+                      <h3>${commit.commit.message}</h3>
+                      <p><strong>Author:</strong> ${
+                        commit.commit.author.name
+                      }</p>
+                      <p><strong>Date:</strong> ${new Date(
+                        commit.commit.author.date
+                      ).toLocaleDateString()}</p>
+                  `;
+            projectList.appendChild(commitElement);
+          });
+        }
+      });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
